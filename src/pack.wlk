@@ -1,27 +1,58 @@
+import consumo.*
+
 class Pack{
-  method disponibles() 
+
+	var fechaVigencia
+	
+	method estaVigente() = fechaVigencia > new Date()
+	
+	method mismoTipoConsumoPack(unConsumo) = unConsumo.tipoConsumo() == self.tipoPack()
+	
+	method tipoPack() = ""
+	
+	method satisfaceConsumo(unConsumo) = self.mismoTipoConsumoPack(unConsumo) and self.criterio(unConsumo)
+
+	method criterio(unConsumo) // Lo necesito polimorfico para cada tipo de paquete
 }
 
-class Credito{
+class Credito inherits Pack {
     var creditoDisponible
     
-    override method disponibles() = creditoDisponible
+    method disponibles() = creditoDisponible  
+    
+    method criterio(unConsumo) = creditoDisponible >= unConsumo.calcularCosto()
+
 }
 
-class MegasLibres{
+class MegasLibres inherits Pack{
     var mbLibres
-
-    override method disponibles() = mbLibres
+    
+	
+    method disponibles() = mbLibres
+    
+   	method criterio(unConsumo) = mbLibres >= unConsumo.gastoRecurso()
+  	
+  	override method tipoPack() = "internet"
+  	
 }
 
-class LlamadasGratis{
+class LlamadasGratis inherits Pack{
     var llamadasGratis
 
-    override method disponibles() = llamadasGratis
+	override method tipoPack() = "llamadas"
+	
+   	method disponibles() = llamadasGratis
+   
+   	method criterio(unConsumo) =  llamadasGratis >= unConsumo.gastoRecurso()
 }
 
-class InternetLibre{
+class InternetLibre inherits Pack{
     var finInternetLibre
 
-    override method disponibles() = finInternetLibre
+    method disponibles() = finInternetLibre
+    
+    override method tipoPack() = "internet"
+    
+    method criterio(unConsumo) =  finInternetLibre > 0 and self.estaVigente()
+  	
 }

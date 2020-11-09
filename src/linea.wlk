@@ -12,11 +12,13 @@ class Linea {
 
 	// Punto 2a)
 	method costoPromedioEntre(fechaInicial,fechaFinal){
+
 		var consumosDentroRango = self.consumosEntre(fechaInicial,fechaFinal)
 		var cantConsumosDentroRango = consumosDentroRango.size()
 		var costoTotalEntreFechas = self.costoTotalRango(consumosDentroRango)
 
 		return costoTotalEntreFechas / cantConsumosDentroRango
+		
 	}
 	
 	method costoTotalUltimosTreintaDias(){
