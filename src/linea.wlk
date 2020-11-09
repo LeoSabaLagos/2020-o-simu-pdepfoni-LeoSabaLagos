@@ -56,3 +56,21 @@ class Linea {
 	method limpiezaPacks(){ packsActivos.removeAllSuchThat{pack => pack.seLimpia()} }
 
 }
+
+
+/*
+
+Punto 10
+
+Lo minimo necesario que hay que hacer para agregar un nuevo pack es que la
+clase del nuevo pack herede de la clase Pack y tenga la interfaz que todo
+pack necesita
+
+Lo minimo necesario que hay que hacer para agregar un nuevo consumo
+que permita enviar sms es que en la empresa se establezca el precio por sms
+y que tenga la interfaz que todo consumo necesite
+
+Debe usarse un diagrama que acompañe la explicación.
+
+
+*/
