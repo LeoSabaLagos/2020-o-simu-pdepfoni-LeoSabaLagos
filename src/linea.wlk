@@ -6,6 +6,9 @@ class Linea {
 	var packsActivos = []
 	var consumosRealizados = []
 
+	method packsActivos() = packsActivos
+	method consumosRealizados() = consumosRealizados
+
 	// Punto 4
 	method agregarPack(unPack){ packsActivos.add(unPack) }
 

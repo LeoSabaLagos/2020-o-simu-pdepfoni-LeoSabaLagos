@@ -1,0 +1,37 @@
+import linea.*
+import consumo.*
+import pack.*
+
+
+	
+
+describe "Tests del Parcial"{
+
+	var linea = new Linea(nroTelefono = 11)
+	var paqueteInt = new MegasLibres(mbLibres = 500,fechaVigencia = new Date(day = 25,month=11,year=1900))
+	var consumo1 = new ConsumoLlamadas(cantidadSegundos = 40,fechaConsumo = new Date(day = 1,month=1,year=2020))
+
+	
+	test "Test que verifique que se haya producido efecto correctamente" {
+
+		linea.agregarPack(paqueteInt)
+		linea.limpiezaPacks()
+	
+		assert.equals(linea.packsActivos() , [])
+	}
+	
+	test "Test que verifique que no se pueda hacer algo" {
+
+		linea.agregarPack(paqueteInt)
+		
+		assert.throwsExceptionWithMessage("No se puede realizar el consumo", {linea.realizarConsumo(consumo1)})
+	}
+	
+	
+	test "Test que verifique que se devuelva bien algo" {
+
+		assert.equals(paqueteInt.tipoPack(),"internet")
+	}
+	
+}
+
