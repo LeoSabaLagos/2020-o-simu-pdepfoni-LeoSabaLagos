@@ -10,15 +10,14 @@ class Pack{
 	
 	method tipoPack() = ""
 	
+	// Punto 3
 	method satisfaceConsumo(unConsumo) = self.mismoTipoConsumoPack(unConsumo) and self.criterio(unConsumo)
 
 	method criterio(unConsumo) // Lo necesito polimorfico para cada tipo de paquete
 }
 
 class Credito inherits Pack {
-    var creditoDisponible
-    
-    method disponibles() = creditoDisponible  
+    var creditoDisponible  
     
     method criterio(unConsumo) = creditoDisponible >= unConsumo.calcularCosto()
 
@@ -26,9 +25,6 @@ class Credito inherits Pack {
 
 class MegasLibres inherits Pack{
     var mbLibres
-    
-	
-    method disponibles() = mbLibres
     
    	method criterio(unConsumo) = mbLibres >= unConsumo.gastoRecurso()
   	
@@ -40,16 +36,12 @@ class LlamadasGratis inherits Pack{
     var llamadasGratis
 
 	override method tipoPack() = "llamadas"
-	
-   	method disponibles() = llamadasGratis
    
    	method criterio(unConsumo) =  llamadasGratis >= unConsumo.gastoRecurso()
 }
 
 class InternetLibre inherits Pack{
-    var finInternetLibre
-
-    method disponibles() = finInternetLibre
+    var finInternetLibre  
     
     override method tipoPack() = "internet"
     

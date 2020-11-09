@@ -2,10 +2,11 @@ import pack.*
 import consumo.*
 
 class Linea {
-	var nroTelefono = 11
+	var nroTelefono
 	var packsActivos = []
 	var consumosRealizados = []
 
+	// Punto 4
 	method agregarPack(unPack){ packsActivos.add(unPack) }
 
 	method agregarConsumo(unConsumo){ consumosRealizados.add(unConsumo) }
