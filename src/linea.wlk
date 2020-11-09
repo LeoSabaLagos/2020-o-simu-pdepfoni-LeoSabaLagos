@@ -47,7 +47,9 @@ class Linea {
 			self.agregarConsumo(unConsumo)
 			packsActivos.find({pack => pack.satisfaceConsumo(unConsumo)}).consumirPack(unConsumo.cantidadConsumo()) 
 		}
-			
-
 	}
+	
+	// Punto 7
+	method limpiezaPacks(){ packsActivos.removeAllSuchThat{pack => pack.seLimpia()} }
+
 }
