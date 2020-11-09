@@ -45,6 +45,12 @@ class MegasLibres inherits Pack{
   	
 }
 
+class MBLibresPlus inherits MegasLibres {
+    override method criterio(unConsumo) = mbLibres >= unConsumo.gastoRecurso() or self.criterioMB(unConsumo)
+
+    method criterioMB(unConsumo) = mbLibres == 0 and unConsumo.gastoRecurso() <= 0.1
+}
+
 class LlamadasGratis inherits Pack{
     var llamadasGratis
 
