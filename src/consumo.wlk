@@ -4,12 +4,14 @@ class Consumo {
     var fechaConsumo
 
     method fechaConsumo() = fechaConsumo
-    
+
 }
 
 class ConsumoInternet inherits Consumo {
     var cantidadMB
     
+    method cantidadConsumo() = cantidadMB
+
     method tipoConsumo() = "internet"
 	
     method calcularCosto(){
@@ -23,6 +25,8 @@ class ConsumoInternet inherits Consumo {
 
 class ConsumoLlamadas inherits Consumo {
     var cantidadSegundos
+
+    method cantidadConsumo() = cantidadSegundos
     
     method tipoConsumo() = "llamadas"
 

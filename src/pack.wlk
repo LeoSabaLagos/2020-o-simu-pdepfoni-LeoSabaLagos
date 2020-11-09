@@ -21,6 +21,7 @@ class Credito inherits Pack {
     
     method criterio(unConsumo) = creditoDisponible >= unConsumo.calcularCosto()
 
+    method consumir(cantidadConsumo) { creditoDisponible = (creditoDisponible - cantidadConsumo).max(0) }
 }
 
 class MegasLibres inherits Pack{
@@ -29,6 +30,8 @@ class MegasLibres inherits Pack{
    	method criterio(unConsumo) = mbLibres >= unConsumo.gastoRecurso()
   	
   	override method tipoPack() = "internet"
+
+    method consumirPack(cantidadConsumo) { mbLibres = (mbLibres - cantidadConsumo).max(0) }
   	
 }
 
@@ -38,6 +41,8 @@ class LlamadasGratis inherits Pack{
 	override method tipoPack() = "llamadas"
    
    	method criterio(unConsumo) =  llamadasGratis >= unConsumo.gastoRecurso()
+
+    method consumirPack(cantidadConsumo)
 }
 
 class InternetLibre inherits Pack{
@@ -46,5 +51,6 @@ class InternetLibre inherits Pack{
     override method tipoPack() = "internet"
     
     method criterio(unConsumo) =  finInternetLibre > 0 and self.estaVigente()
-  	
+
+    method consumirPack(cantidadConsumo)
 }

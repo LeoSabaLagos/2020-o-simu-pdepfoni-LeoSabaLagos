@@ -36,4 +36,18 @@ class Linea {
 	
 	// Punto 5
 	method puedeHacerConsumo(unConsumo) = packsActivos.any({pack => pack.satisfaceConsumo(unConsumo)})
+
+	method noPuedeHacerConsumo(unConsumo) = not(self.puedeHacerConsumo(unConsumo))
+
+	//Punto 6
+	method realizarConsumo(unConsumo){
+		if(self.noPuedeHacerConsumo(unConsumo))
+			self.error("No se puede realizar el consumo")
+		else{
+			self.agregarConsumo(unConsumo)
+			packsActivos.find({pack => pack.satisfaceConsumo(unConsumo)}).consumirPack(unConsumo.cantidadConsumo()) 
+		}
+			
+
+	}
 }
