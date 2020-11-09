@@ -2,9 +2,6 @@ import linea.*
 import consumo.*
 import pack.*
 
-
-	
-
 describe "Tests del Parcial"{
 
 	var linea = new Linea(nroTelefono = 11)
