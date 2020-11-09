@@ -34,4 +34,6 @@ class Linea {
 
 	method costoTotalRango(listaConsumos) = listaConsumos.map({consumo => consumo.calcularCosto()}).sum()
 	
+	// Punto 5
+	method puedeHacerConsumo(unConsumo) = packsActivos.any({pack => pack.satisfaceConsumo(unConsumo)})
 }
